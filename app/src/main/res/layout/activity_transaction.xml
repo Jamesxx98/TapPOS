@@ -95,26 +95,24 @@
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp">
 
         <ImageView
             android:id="@+id/ivMasterCardLogo"
             android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="MasterCard Logo"
-        android:src="@drawable/mastercard_logo" />
+            android:layout_height="60dp"
+            android:contentDescription="MasterCard Logo"
+            android:src="@drawable/mastercard_logo" />
 
         <ImageView
             android:id="@+id/ivVisaLogo"
             android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="Visa Logo"
-        android:src="@drawable/visa_logo"
-        android:layout_marginStart="16dp" />
-
+            android:layout_height="60dp"
+            android:contentDescription="Visa Logo"
+            android:src="@drawable/visa_logo"
+            android:layout_marginStart="16dp" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
