@@ -37,7 +37,7 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
         // Initialize NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this)
 
-        // Set click listener for Pay button
+        // Set click listener for Pay button although i wanted a progress bar :)
         btnPay.setOnClickListener {
             val amount = etAmount.text.toString()
             if (amount.isNotEmpty()) {

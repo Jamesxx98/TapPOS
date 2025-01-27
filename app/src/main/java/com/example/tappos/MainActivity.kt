@@ -11,10 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Use findViewById to access the button
+        // accessing button na findViewById
         val btnGoToTransaction: Button = findViewById(R.id.btnGoToTransaction)
 
-        // Navigate to TransactionActivity
+        // moving to TransactionActivity
         btnGoToTransaction.setOnClickListener {
             val intent = Intent(this, TransactionActivity::class.java)
             startActivity(intent)
