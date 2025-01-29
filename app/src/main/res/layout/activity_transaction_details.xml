@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@android:color/white"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -68,7 +69,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Back Button with custom style -->
     <Button
         android:id="@+id/btnBackToMain"
         android:layout_width="0dp"
