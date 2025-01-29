@@ -9,11 +9,15 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tappos.GlobalFunctions.Channel.sendOnline
+import com.example.tappos.ISOMessages.BuildISOMessages.buildCustomMessage
+import com.example.tappos.ISOMessages.CustomISOPackager
 import com.github.devnied.emvnfccard.model.EmvCard
 import com.github.devnied.emvnfccard.parser.EmvTemplate
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
+import org.jpos.iso.ISOMsg
 import java.io.IOException
 import java.time.LocalDate
 import java.time.ZoneId
@@ -114,19 +118,44 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
                 // Get the amount entered by the user
                 val amount = etAmount.text.toString()
 
-                // Start the TransactionDetailsActivity with the transaction data
-                val intent = Intent(this, TransactionDetailsActivity::class.java).apply {
-                    putExtra("CARD_NUMBER", cardNumber)
-                    putExtra("CARD_EXPIRY", date.toString())
-                    putExtra("AMOUNT", amount)
-                    putExtra("STATUS", "Payment successful")
-                }
-                startActivity(intent)
+                val isoMsg = ISOMsg()
+                val packager = CustomISOPackager()
+                isoMsg.packager = packager
 
-                // Update the transaction status in the UI
-                runOnUiThread {
-                    tvTransactionStatus.text = "Payment successful!\nCard: $cardNumber\nExpiry: $date"
+                buildCustomMessage(isoMsg, cardNumber, date.toString(), amount)
+
+                val response = sendOnline(isoMsg, packager)
+
+                if (response != null && response.getString("39") == "00") {
+                    // Start the TransactionDetailsActivity with the transaction data
+                    val intent = Intent(this, TransactionDetailsActivity::class.java).apply {
+                        putExtra("CARD_NUMBER", cardNumber)
+                        putExtra("CARD_EXPIRY", date.toString())
+                        putExtra("AMOUNT", amount)
+                        putExtra("STATUS", "Payment successful")
+                    }
+                    startActivity(intent)
+
+                    // Update the transaction status in the UI
+                    runOnUiThread {
+                        tvTransactionStatus.text = "Payment successful!\nCard: $cardNumber\nExpiry: $date"
+                    }
+                } else {
+                    // Start the TransactionDetailsActivity with the transaction data
+                    val intent = Intent(this, TransactionDetailsActivity::class.java).apply {
+                        putExtra("CARD_NUMBER", cardNumber)
+                        putExtra("CARD_EXPIRY", date.toString())
+                        putExtra("AMOUNT", amount)
+                        putExtra("STATUS", "Payment failed")
+                    }
+                    startActivity(intent)
+
+                    // Update the transaction status in the UI
+                    runOnUiThread {
+                        tvTransactionStatus.text = "Payment failed!\nCard: $cardNumber\nExpiry: $date"
+                    }
                 }
+
             }
         } catch (e: IOException) {
             e.printStackTrace()
