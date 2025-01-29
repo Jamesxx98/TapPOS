@@ -3,4 +3,69 @@
     <color name="teal_700">#009688</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+        <!-- Neutrals -->
+        <color name="gray">#808080</color>
+        <color name="light_gray">#D3D3D3</color>
+        <color name="dark_gray">#A9A9A9</color>
+        <color name="silver">#C0C0C0</color>
+
+        <!-- Blues -->
+        <color name="light_blue">#ADD8E6</color>
+        <color name="blue">#0000FF</color>
+        <color name="sky_blue">#87CEEB</color>
+        <color name="navy_blue">#000080</color>
+        <color name="dodger_blue">#1E90FF</color>
+        <color name="steel_blue">#4682B4</color>
+
+        <!-- Greens -->
+        <color name="light_green">#90EE90</color>
+        <color name="green">#008000</color>
+        <color name="forest_green">#228B22</color>
+        <color name="lime_green">#32CD32</color>
+        <color name="dark_green">#006400</color>
+        <color name="medium_sea_green">#3CB371</color>
+
+        <!-- Reds -->
+        <color name="light_coral">#F08080</color>
+        <color name="red">#FF0000</color>
+        <color name="dark_red">#8B0000</color>
+        <color name="tomato">#FF6347</color>
+        <color name="firebrick">#B22222</color>
+        <color name="crimson">#DC143C</color>
+
+        <!-- Yellows -->
+        <color name="light_yellow">#FFFFE0</color>
+        <color name="yellow">#FFFF00</color>
+        <color name="gold">#FFD700</color>
+        <color name="goldenrod">#DAA520</color>
+        <color name="khaki">#F0E68C</color>
+        <color name="yellow_green">#9ACD32</color>
+
+        <!-- Purples -->
+        <color name="light_purple">#D8BFD8</color>
+        <color name="purple">#800080</color>
+        <color name="lavender">#E6E6FA</color>
+        <color name="orchid">#DA70D6</color>
+        <color name="indigo">#4B0082</color>
+        <color name="violet">#EE82EE</color>
+
+        <!-- Teals -->
+        <color name="teal_500">#1DE9B6</color>
+        <color name="medium_turquoise">#48D1CC</color>
+        <color name="light_sea_green">#20B2AA</color>
+
+        <!-- Browns -->
+        <color name="saddle_brown">#8B4513</color>
+        <color name="chocolate">#D2691E</color>
+        <color name="peru">#CD853F</color>
+        <color name="sandy_brown">#F4A460</color>
+
+        <!-- Pinks -->
+        <color name="light_pink">#FFB6C1</color>
+        <color name="pink">#FFC0CB</color>
+        <color name="hot_pink">#FF69B4</color>
+        <color name="deeppink">#FF1493</color>
+        <color name="pale_violet_red">#DB7093</color>
+
 </resources>
