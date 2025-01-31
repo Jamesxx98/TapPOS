@@ -5,20 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@android:color/white"
+    android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="6dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         app:contentPadding="16dp"
+        app:cardBackgroundColor="@color/white"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        app:cardBackgroundColor="@android:color/white"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnBackToMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -31,54 +34,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Card Number: "
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/dark_gray"
+                android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/tvCardExpiry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Card Expiry: "
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/dark_gray"
+                android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/tvTransactionAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Amount: "
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/dark_gray"
+                android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/tvTransactionStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Transaction Status: "
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="@color/dark_gray"
                 android:layout_marginBottom="24dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBackToMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="384dp"
-        android:backgroundTint="@color/dodger_blue"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/rounded_button"
         android:padding="12dp"
         android:text="Back to Main"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

@@ -40,7 +40,7 @@ class TransactionDetailsActivity : AppCompatActivity() {
 
         // Set back button functionality
         btnBackToMain.setOnClickListener {
-            finish() // Close the current activity and return to the previous screen
+            finish()
         }
     }
 }
