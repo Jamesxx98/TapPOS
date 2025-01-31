@@ -54,12 +54,19 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
     // Function to check if NFC is supported and enabled
     private fun checkNfcSupportAndEnable() {
         if (mNfcAdapter == null) {
-            tvTransactionStatus.text = "NFC is not supported on this device."
-            return
-        }
-
-        if (!mNfcAdapter!!.isEnabled) {
-            tvTransactionStatus.text = "Please enable NFC in settings."
+            // Device does not support NFC
+            tvTransactionStatus.text = "NFC is not supported on this device. Please use a device with NFC capability."
+            btnPay.isEnabled = false // Disable payment button
+        } else {
+            if (!mNfcAdapter!!.isEnabled) {
+                // NFC is disabled, prompt user to enable it
+                tvTransactionStatus.text = "NFC is not enabled. Please enable NFC in your device's settings."
+                btnPay.isEnabled = false // Disable payment button
+            } else {
+                // NFC is supported and enabled
+                tvTransactionStatus.text = "Ready to scan NFC card."
+                btnPay.isEnabled = true // Enable payment button
+            }
         }
     }
 
