@@ -120,10 +120,8 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
                     val expireDate = it.expireDate?.toInstant()?.atZone(ZoneId.systemDefault())?.toLocalDate()
                         ?: LocalDate.of(1999, 12, 31)
 
-                    // Format the expiry date to MM/YY
-                    val formattedExpiry = expireDate.format(DateTimeFormatter.ofPattern("MMyy"))
 
-                    Log.d("PaymentResult", "Card Number: $cardNumber, Expiry: $formattedExpiry")
+                    Log.d("PaymentResult", "Card Number: $cardNumber, Expiry: $expireDate")
 
                     val amount = etAmount.text.toString()
                     if (amount.isEmpty()) {
@@ -142,16 +140,19 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
                     val isSuccess = response?.getString("39") == "00"
 
                     val statusMessage = if (isSuccess) "Payment successful" else "Payment failed"
+                    val formattedExpiry = expireDate.format(DateTimeFormatter.ofPattern("MM/yy")) // Convert LocalDate to String
+
                     val intent = Intent(this@TransactionActivity, TransactionDetailsActivity::class.java).apply {
                         putExtra("CARD_NUMBER", cardNumber)
                         putExtra("CARD_EXPIRY", formattedExpiry)
                         putExtra("AMOUNT", amount)
                         putExtra("STATUS", statusMessage)
                     }
+
                     startActivity(intent)
 
                     runOnUiThread {
-                        tvTransactionStatus.text = "$statusMessage!\nCard: $cardNumber\nExpiry: $formattedExpiry"
+                        tvTransactionStatus.text = "$statusMessage!\nCard: $cardNumber\nExpiry: $expireDate"
                     }
                 }
             } catch (e: IOException) {

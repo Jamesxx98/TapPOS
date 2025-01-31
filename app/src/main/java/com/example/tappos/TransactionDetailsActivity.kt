@@ -28,15 +28,15 @@ class TransactionDetailsActivity : AppCompatActivity() {
 
         // Get transaction data from Intent
         val cardNumber = intent.getStringExtra("CARD_NUMBER")
-        val cardExpiry = intent.getStringExtra("CARD_EXPIRY")
-        val transactionAmount = intent.getStringExtra("AMOUNT")
-        val transactionStatus = intent.getStringExtra("STATUS")
+        val expireDate = intent.getStringExtra("CARD_EXPIRY")
+        val amount = intent.getStringExtra("AMOUNT")
+        val statusMessage = intent.getStringExtra("STATUS")
 
         // Set values to the TextViews
         tvCardNumber.text = "Card Number: $cardNumber"
-        tvCardExpiry.text = "Card Expiry: $cardExpiry"
-        tvTransactionAmount.text = "Amount: $transactionAmount"
-        tvTransactionStatus.text = "Transaction Status: $transactionStatus"
+        tvCardExpiry.text = "Card Expiry: $expireDate"
+        tvTransactionAmount.text = "Amount: $amount"
+        tvTransactionStatus.text = "Transaction Status: $statusMessage"
 
         // Set back button functionality
         btnBackToMain.setOnClickListener {

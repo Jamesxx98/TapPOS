@@ -1,6 +1,8 @@
 package com.example.tappos.GlobalFunctions;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -27,5 +29,11 @@ public class Custom {
         String time = datetime.substring(datetime.length() - 6);
 
         return new String[]{date, time};
+    }
+
+    public static String convertToMMYY(String date) {
+        LocalDate localDate = LocalDate.parse(date); // Parse the input string
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMyy"); // Define the MMYY format
+        return localDate.format(formatter); // Format and return the result
     }
 }

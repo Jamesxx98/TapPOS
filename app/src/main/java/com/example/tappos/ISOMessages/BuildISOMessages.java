@@ -1,5 +1,6 @@
 package com.example.tappos.ISOMessages;
 
+import static com.example.tappos.GlobalFunctions.Custom.convertToMMYY;
 import static com.example.tappos.GlobalFunctions.Custom.getDateTime;
 
 import com.example.tappos.GlobalFunctions.Custom;
@@ -18,7 +19,7 @@ public class BuildISOMessages {
         isoMsg.set(11, ISOUtil.zeropad("000001", 6));
         isoMsg.set(12, getDateTime()[1]);
         isoMsg.set(13, getDateTime()[0]);
-        isoMsg.set(14, formattedExpiry);
+        isoMsg.set(14, convertToMMYY(formattedExpiry));
         isoMsg.set(22, "070");
         isoMsg.set(24, "001");
         isoMsg.set(25, "00");
