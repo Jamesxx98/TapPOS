@@ -24,11 +24,11 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/history"
-    android:contentDescription="Transaction History"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:padding="8dp"
-    android:clickable="true"
-    android:focusable="true"/>
+        android:contentDescription="Transaction History"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

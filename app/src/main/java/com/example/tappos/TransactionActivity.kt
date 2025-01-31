@@ -17,6 +17,9 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import org.jpos.iso.ISOMsg
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
 import java.time.LocalDate
 import java.time.ZoneId
@@ -48,6 +51,24 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
         btnPay.setOnClickListener {
             val amount = etAmount.text.toString()
             tvTransactionStatus.text = if (amount.isNotEmpty()) "Ready to scan NFC card..." else "Please enter an amount."
+
+            transactionService.getAll().enqueue(object : Callback<List<Transaction>> {
+                override fun onResponse(
+                    call: Call<List<Transaction>>,
+                    response: Response<List<Transaction>>
+                ) {
+                    if(response.isSuccessful()){
+                        Log.d("Transaction api","transaction successful ${response.body()}")
+                    }else{
+                        Log.e("Transaction api",response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
+
+                }
+
+            })
         }
     }
 
