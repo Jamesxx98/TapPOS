@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- NFC Feature Declaration -->
     <uses-feature android:name="android.hardware.nfc" android:required="true" />
 
     <application
@@ -19,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TapPOS">
 
-        <!-- MainActivity is the entry point -->
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -30,14 +28,16 @@
 
         <activity android:name=".TransactionActivity"
             android:exported="true">
-            <!--
             <intent-filter>
                 <action android:name="android.nfc.action.TAG_DISCOVERED" />
             </intent-filter>
-            -->
         </activity>
 
-        <activity android:name=".TransactionDetailsActivity" />
+        <activity android:name=".TransactionDetailsActivity"
+            android:exported="true" />
+
+        <activity android:name=".TransactionHistoryActivity"
+            android:exported="true" />
 
     </application>
 </manifest>

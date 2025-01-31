@@ -59,4 +59,6 @@ dependencies {
     implementation ("com.github.devnied.emvnfccard:library:3.0.1")
     implementation ("org.jpos:jpos:2.1.7")
     implementation(libs.kotlin.stdlib.jdk8)
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.google.code.gson:gson:2.11.0")
 }
