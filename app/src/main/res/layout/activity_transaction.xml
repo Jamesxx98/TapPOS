@@ -5,9 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="@android:color/white"
     tools:ignore="MissingClass">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tbg"
+        android:alpha="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to TapPOS!"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
 
     <ImageView
         android:id="@+id/ivLogo"
@@ -16,10 +40,10 @@
         android:src="@drawable/contactless_payment"
         android:contentDescription="Payment Logo"
         android:scaleType="centerInside"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/tvEnterAmount"
@@ -54,7 +78,7 @@
             android:inputType="numberDecimal"
             android:textSize="18sp"
             android:padding="10dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:maxLength="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +105,7 @@
         android:layout_height="wrap_content"
         android:text="Waiting for NFC..."
         android:textSize="16sp"
-        android:textColor="@color/gray"
+        android:textColor="@color/black"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/btnPay"
         app:layout_constraintStart_toStartOf="parent"

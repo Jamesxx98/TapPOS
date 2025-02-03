@@ -12,6 +12,6 @@ class TransactionHistoryActivity : AppCompatActivity() {
 
         val tvTransactionList: TextView = findViewById(R.id.tvTransactionList)
 
-        tvTransactionList.text = "List of transactions will be displayed here."
+        tvTransactionList.text = "Transaction Details"
     }
 }
