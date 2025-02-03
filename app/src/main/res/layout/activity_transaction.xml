@@ -7,17 +7,24 @@
     android:layout_height="match_parent"
     tools:ignore="MissingClass">
 
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/tbg"
-        android:alpha="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <FrameLayout
+        android:id="@+id/backgroundFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tbg"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:alpha="0.5"/>
+    </FrameLayout>
 
     <TextView
         android:id="@+id/tvWelcome"
@@ -84,20 +91,23 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pay with NFC"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:cornerRadius="12dp"
-        app:icon="@drawable/nfc_tap"
-        app:iconGravity="textStart"
-        android:backgroundTint="@color/teal_700"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/amountInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Pay with NFC"
+    android:textSize="14sp"
+    android:textStyle="bold"
+    app:cornerRadius="8dp"
+    app:icon="@drawable/nfc_tap"
+    app:iconGravity="textStart"
+    android:backgroundTint="@color/teal_700"
+    android:textColor="@android:color/white"
+    app:layout_constraintTop_toBottomOf="@id/amountInputLayout"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="16dp"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp"/>
+
 
     <TextView
         android:id="@+id/tvTransactionStatus"

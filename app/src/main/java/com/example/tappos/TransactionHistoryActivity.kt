@@ -10,8 +10,9 @@ class TransactionHistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction_history)
 
-        val tvTransactionList: TextView = findViewById(R.id.tvTransactionList)
+        val tvTransactionHistoryTitle: TextView = findViewById(R.id.tvTransactionHistoryTitle)
 
-        tvTransactionList.text = "Transaction Details"
+        tvTransactionHistoryTitle.text = "Transaction Details"
     }
 }
+

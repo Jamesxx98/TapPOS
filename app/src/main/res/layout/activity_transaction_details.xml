@@ -100,7 +100,7 @@
         android:id="@+id/btnBackToMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="608dp"
+        android:layout_marginTop="524dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:text="Back to Main"
         android:textColor="@android:color/white"

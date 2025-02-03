@@ -17,9 +17,6 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import org.jpos.iso.ISOMsg
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.IOException
 import java.time.LocalDate
 import java.time.ZoneId
@@ -51,24 +48,6 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
         btnPay.setOnClickListener {
             val amount = etAmount.text.toString()
             tvTransactionStatus.text = if (amount.isNotEmpty()) "Ready to scan NFC card..." else "Please enter an amount."
-
-            transactionService.getAll().enqueue(object : Callback<List<Transaction>> {
-                override fun onResponse(
-                    call: Call<List<Transaction>>,
-                    response: Response<List<Transaction>>
-                ) {
-                    if(response.isSuccessful()){
-                        Log.d("Transaction api","transaction successful ${response.body()}")
-                    }else{
-                        Log.e("Transaction api",response.message())
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
-
-                }
-
-            })
         }
     }
 
@@ -144,10 +123,9 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
 
                 val card: EmvCard? = parser.readEmvCard()
                 card?.let {
-                    val cardNumber = it.cardNumber ?: "Unknown"
+                    val cardNumber = it.cardNumber?.takeLast(4) ?: "Unknown"  // Get last 4 digits of card number
                     val expireDate = it.expireDate?.toInstant()?.atZone(ZoneId.systemDefault())?.toLocalDate()
                         ?: LocalDate.of(1999, 12, 31)
-
 
                     Log.d("PaymentResult", "Card Number: $cardNumber, Expiry: $expireDate")
 
@@ -168,7 +146,7 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
                     val isSuccess = response?.getString("39") == "00"
 
                     val statusMessage = if (isSuccess) "Payment successful" else "Payment failed"
-                    val formattedExpiry = expireDate.format(DateTimeFormatter.ofPattern("MM/yy")) // Convert LocalDate to String
+                    val formattedExpiry = expireDate.format(DateTimeFormatter.ofPattern("MM/yy")) // Format expiry date as MM/yy
 
                     val intent = Intent(this@TransactionActivity, TransactionDetailsActivity::class.java).apply {
                         putExtra("CARD_NUMBER", cardNumber)
@@ -180,7 +158,7 @@ class TransactionActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
                     startActivity(intent)
 
                     runOnUiThread {
-                        tvTransactionStatus.text = "$statusMessage!\nCard: $cardNumber\nExpiry: $expireDate"
+                        tvTransactionStatus.text = "$statusMessage!\nCard: **** **** **** $cardNumber\nExpiry: $formattedExpiry"
                     }
                 }
             } catch (e: IOException) {
