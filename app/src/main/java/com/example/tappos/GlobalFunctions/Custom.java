@@ -32,8 +32,8 @@ public class Custom {
     }
 
     public static String convertToMMYY(String date) {
-        LocalDate localDate = LocalDate.parse(date); // Parse the input string
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMyy"); // Define the MMYY format
-        return localDate.format(formatter); // Format and return the result
+        LocalDate localDate = LocalDate.parse(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMyy");
+        return localDate.format(formatter);
     }
 }

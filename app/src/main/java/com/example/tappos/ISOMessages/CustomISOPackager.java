@@ -33,13 +33,13 @@ public class CustomISOPackager extends ISOBasePackager {
         /**
          * We have to override the default because there's a miscalculation of the
          * length of the bitmap
-         * */
+         */
 
         @Override
         public int unpack(ISOComponent c, byte[] b, int offset) throws ISOException {
             int len;
 
-            BitSet bmap = ISOUtil.byte2BitSet (b, offset, getLength());
+            BitSet bmap = ISOUtil.byte2BitSet(b, offset, getLength());
             c.setValue(bmap);
             len = bmap.get(1) ? 128 : 64;
 
@@ -47,14 +47,14 @@ public class CustomISOPackager extends ISOBasePackager {
                 len = 192;
 
 
-            return Math.min (getLength(), len >> 3);
+            return Math.min(getLength(), len >> 3);
         }
     }
 
     protected ISOFieldPackager fld[] = {
             /*000*/ new IFB_NUMERIC(4, "Message Type Indicator", true),
             /*001*/ new C_IFB_BITMAP(64, "Bitmap"),
-            /*002*/ new IFB_LLNUM(20, "Primary Account number",true),
+            /*002*/ new IFB_LLNUM(20, "Primary Account number", true),
             /*003*/ new IFB_NUMERIC(6, "Processing Code", true),
             /*004*/ new IFB_NUMERIC(12, "Amount, Transaction", true),
             /*005*/ new IFB_NUMERIC(12, "Amount, Reconciliation", true),
@@ -187,9 +187,4 @@ public class CustomISOPackager extends ISOBasePackager {
         super();
         setFieldPackager(fld);
     }
-//    public CrdbISOPackager(){
-//        super();
-//        setFieldPackager(fld);
-//    }
-
 }

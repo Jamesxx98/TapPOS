@@ -67,7 +67,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/amountInputLayout"
-        android:layout_width="0dp"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:hint="Enter amount"
         app:boxStrokeColor="#2196F3"
